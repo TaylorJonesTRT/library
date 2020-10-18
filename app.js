@@ -49,8 +49,8 @@ function addBookToLibrary(title, author, pages, read) {
 // Update the DOM to show all of the books in the library and add other functions
 function displayLibrary() {
   resetDisplay();
-  for (let i = 0; i < myLibrary.length; i++){
 
+  for (let i = 0; i < myLibrary.length; i++){
     let row = document.createElement("tr");
     row.classList.add("book-entery");
     row.setAttribute("book-id", i+1);
@@ -98,6 +98,7 @@ function displayLibrary() {
     row.appendChild(deleteBtn);
 
     deleteBtn.addEventListener("click", removeBookFromLibrary);
+    }
   }
 
   function resetDisplay() {
@@ -110,31 +111,6 @@ function displayLibrary() {
     resetDisplay();
     displayLibrary();
   }
-  // for (book of myLibrary) {
-  //   console.log(book.id);
-  //   let row = document.createElement("tr");
-  //   let checkedBox = document.createElement("INPUT");
-  //   checkedBox.setAttribute("type", "checkbox");
-  //   if (book.read === true) {
-  //     checkedBox.checked = true;
-  //   } else {
-  //     checkedBox.checked = false;
-  //   }
-  //   table.appendChild(row);
-  //   let bookIdRow = document.createElement("td").innerHTML = book.id;
-  //   let titleRow = document.createElement("td").innerHTML = book.title;
-  //   let authorRow = document.createElement("td").innerHTML = book.author;
-  //   let pageNumRow = document.createElement("td").innerHTML = book.pageNum;
-  //   let checkboxRow = document.createElement("td").appendChild(checkedBox);
-  //   // Create a delete button
-  //   let entryDelete = document.createElement("td");
-  //   let aHref = document.createElement("a");
-  //   aHref.href = "#";
-  //   let fontAwesome = document.createElement("i");
-  //   aHref.appendChild(fontAwesome);
-  //   entryDelete.appendChild(aHref);
-  // }
-}
 
 
 submitBtn.addEventListener('click', addBookToLibrary);
