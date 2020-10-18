@@ -47,6 +47,7 @@ function addBookToLibrary(title, author, pages, read) {
 // Update the DOM to show all of the books in the library and add other functions
 function displayLibrary() {
   myLibrary = JSON.parse(localStorage.getItem('my_library')) || [];
+  resetDisplay();
   for (i = 0; i < myLibrary.length; i++){
     let row = document.createElement("tr");
     row.classList.add("book-entery");
