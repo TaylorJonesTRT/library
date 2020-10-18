@@ -7,9 +7,6 @@ let closeForm = document.querySelector(".close-form");
 let submitBtn = document.querySelector(".add-book-btn");
 let readStatusRow = document.getElementById("read-status");
 
-window.addEventListener('load', () => {
-  displayLibrary();
-})
 
 newBookBtn.addEventListener('click', () => {
     form.style.display = "block";
@@ -82,9 +79,14 @@ function displayLibrary() {
     row.appendChild(deleteBtn);
   }
 
+  function resetDisplay() {
+    table.innerHTML = "";
+  }
+
   function removeBookFromLibrary() {
-    myLibrary.splice(this.parentNode.parentNode.rowIndex - 1, 1);
+    myLibrary.splice(i-1, 1);
     localStorage.setItem('my_library', JSON.stringify(myLibrary));
+    resetDisplay();
     displayLibrary();
   }
   // for (book of myLibrary) {
@@ -115,3 +117,5 @@ function displayLibrary() {
 
 
 submitBtn.addEventListener('click', addBookToLibrary);
+
+displayLibrary();
