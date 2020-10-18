@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css?family=Marvel:400,700");
+
+body {
+	background-color: #f6f6f8;
+	margin: 0;
+	font-family: sans-serif;
+}
+
+header {
+	width: 100%;
+	height: 100px;
+}
+
+.logo {
+	font-family: "Bebas Neue", cursive;
+	color: #b6282a;
+	font-size: 4em;
+	text-align: center;
+	margin-top: 20px;
+}
+
+#container {
+	width: 980px;
+	margin: 0 auto;
+}
+
+#content {
+	height: auto;
+}
+
+.styled-table {
+	border-collapse: collapse;
+	margin: 25px 0;
+	font-size: 0.9em;
+	font-family: sans-serif;
+	width: 100%;
+	min-width: 400px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+	background-color: #b6282a;
+	color: #ffffff;
+	text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+	padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+	border-bottom: 1px solid #e3e3e3;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+	background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+	border-bottom: 2px solid #b6282a;
+}
+
+.styled-table tbody tr.active-row {
+	font-weight: bold;
+	color: #b6282a;
+}
+
+.fa-trash-alt {
+	text-align: center;
+	margin: 2px 0 0 15px;
+	color: #000;
+}
+
+.new-book-form {
+	background: #fff;
+	width: 750px;
+	height: auto;
+	margin: 0 auto;
+	position: relative;
+	display: none;
+	top: -200px;
+}
+
+.form-header {
+	background-color: #b6282a;
+	width: 100%;
+	height: 30px;
+	text-align: center;
+	color: #fff;
+	padding-top: 10px;
+}
+
+.close-form {
+	float: right;
+	margin-right: 20px;
+	color: #fff;
+}
+
+.new-book-form form {
+	text-align: center;
+	margin-top: 20px;
+	padding-bottom: 20px;
+}
+
+/* Style inputs with type="text", select elements and textareas */
+input[type="text"],
+select,
+textarea {
+	width: 50%; /* Full width */
+	padding: 12px; /* Some padding */
+	border: 1px solid #ccc; /* Gray border */
+	border-radius: 4px; /* Rounded borders */
+	box-sizing: border-box; /* Make sure that padding and width stays in place */
+	margin-top: 6px; /* Add a top margin */
+	margin-bottom: 16px; /* Bottom margin */
+	resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+/* Style the submit button with a specific background color etc */
+input[type="submit"] {
+	background-color: #b6282a;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+input[type="submit"]:hover {
+	background-color: #b6282ad8;
+}
+
+.blur {
+	filter: blur(8px);
+	-webkit-filter: blur(8px);
+}

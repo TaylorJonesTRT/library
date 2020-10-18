@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+  <head>
+    <title>Your "Local" Library</title>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/deca8c3d27.js" crossorigin="anonymous"></script>
+  <body>
+    <div id="container">
+    
+      <header>
+        <div class="logo">Your "Local" Library</div>
+      </header>
+
+      <div id="content">
+        <button id="new-book">Add Book</button>
+        <table class="styled-table">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Author</th>
+                  <th>Page Count</th>
+                  <th>Read</th>
+                  <th>Delete</th>
+              </tr>
+          </thead>
+          <tbody class="table-body">
+          </tbody>
+      </table>
+      </div>
+
+      <div class="new-book-form open">
+        <div class="form-header">
+          Add a new book!
+          <a href=""><i class="fas fa-times close-form"></i></a>
+        </div>
+        <form>
+          <label for="bookTitle">Book Title:</label><br>
+          <input type="text" id="book-title" name="book-title"><br>
+          <label for="author">Author:</label><br>
+          <input type="text" id="author" name="author"><br><br>
+          <label for="page-count">Page Count:</label><br>
+          <input type="text" id="page-count" name="page-count"><br><br>
+          <label for="read-status">Read:</label><br>
+          <input type="checkbox" id="read-status" name="read-status"><br><br>
+          <input type="submit" class="add-book-btn" value="Submit">
+        </form>
+      </div>
+
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
