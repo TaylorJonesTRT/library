@@ -66,9 +66,12 @@ header {
 	color: #b6282a;
 }
 
-.fa-trash-alt {
-	text-align: center;
-	margin: 2px 0 0 15px;
+.read-status {
+	margin: 13px 0 0 25px;
+}
+
+.fa-trash {
+	margin: 0 0 0 15px;
 	color: #000;
 }
 

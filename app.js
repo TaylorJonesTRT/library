@@ -7,6 +7,10 @@ let closeForm = document.querySelector(".close-form");
 let submitBtn = document.querySelector(".add-book-btn");
 let readStatusRow = document.getElementById("read-status");
 
+window.addEventListener('load', () => {
+  myLibrary = JSON.parse(localStorage.getItem('my_library')) || [];
+  displayLibrary();
+});
 
 newBookBtn.addEventListener('click', () => {
     form.style.display = "block";
@@ -19,8 +23,7 @@ closeForm.addEventListener('click', () => {
   document.querySelector(".logo").classList.remove("blur");
 })
 
-function Book(id, title, author, pages, read) {
-  this.id = id;
+function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pageNum = pages;
@@ -29,7 +32,6 @@ function Book(id, title, author, pages, read) {
 
 function addBookToLibrary(title, author, pages, read) {
   // Need to create the code that will take the information from the html form and route it into here
-  let idOfBook = myLibrary.length;
   let titleRow = document.getElementById("book-title").value;
   let authorRow = document.getElementById("author").value;
   let pageCountRow = document.getElementById("page-count").value;
@@ -38,7 +40,7 @@ function addBookToLibrary(title, author, pages, read) {
   if (titleRow == "" || authorRow == "" || pageCountRow == "") {
     alert("Please make sure to fill out all form rows");
   } else {
-    let newBook = new Book(idOfBook, titleRow, authorRow, pageCountRow, readStatusRow);
+    let newBook = new Book(titleRow, authorRow, pageCountRow, readStatusRow);
     myLibrary.push(newBook);
     localStorage.setItem('my_library', JSON.stringify(myLibrary));
   }
@@ -46,15 +48,16 @@ function addBookToLibrary(title, author, pages, read) {
 
 // Update the DOM to show all of the books in the library and add other functions
 function displayLibrary() {
-  myLibrary = JSON.parse(localStorage.getItem('my_library')) || [];
   resetDisplay();
-  for (i = 0; i < myLibrary.length; i++){
+  for (let i = 0; i < myLibrary.length; i++){
+
     let row = document.createElement("tr");
     row.classList.add("book-entery");
+    row.setAttribute("book-id", i+1);
     table.appendChild(row);
 
     let idData = document.createElement("td");
-    idData.innerHTML = myLibrary[i].id;
+    idData.innerHTML = i+1;
     row.appendChild(idData);
 
     let titleData = document.createElement("td");
@@ -69,15 +72,32 @@ function displayLibrary() {
     pageNumData.innerHTML = myLibrary[i].pageNum;
     row.appendChild(pageNumData);
 
-    let readStatusData = document.createElement("td");
-    readStatusData.innerHTML = myLibrary[i].read;
+    let readStatusData = document.createElement("td").appendChild(document.createElement("input"));
+    readStatusData.type = "checkbox";
+    readStatusData.classList.add("read-status");
+    if (myLibrary[i].read == true) {
+      readStatusData.checked = true;
+    } else {
+      readStatusData.checked = false;
+    }
     row.appendChild(readStatusData);
+    readStatusData.addEventListener("click", () => {
+      if (myLibrary[i].read == true) {
+        myLibrary[i].read = false;
+        localStorage.setItem('my_library', JSON.stringify(myLibrary));
+      } else {
+        myLibrary[i].read = true;
+        localStorage.setItem('my_library', JSON.stringify(myLibrary));
+      }
+    });
 
     let deleteBtn = document.createElement("td");
-    deleteBtn.addEventListener("click", removeBookFromLibrary);
+    deleteBtn.setAttribute("delete-id", myLibrary[i].id)
     deleteBtn.appendChild(document.createElement("a")).classList.add("fas", "fa-trash");
     deleteBtn.href = "#";
     row.appendChild(deleteBtn);
+
+    deleteBtn.addEventListener("click", removeBookFromLibrary);
   }
 
   function resetDisplay() {
@@ -85,7 +105,7 @@ function displayLibrary() {
   }
 
   function removeBookFromLibrary() {
-    myLibrary.splice(i-1, 1);
+    myLibrary.splice(this.parentNode.rowIndex - 1, 1);
     localStorage.setItem('my_library', JSON.stringify(myLibrary));
     resetDisplay();
     displayLibrary();
