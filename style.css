@@ -108,6 +108,7 @@ header {
 
 /* Style inputs with type="text", select elements and textareas */
 input[type="text"],
+input[type="number"],
 select,
 textarea {
 	width: 50%; /* Full width */
