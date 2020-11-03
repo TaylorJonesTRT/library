@@ -23,15 +23,16 @@ closeForm.addEventListener('click', () => {
   document.querySelector(".logo").classList.remove("blur");
 })
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pageNum = pages;
-  this.read = read;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pageNum = pages;
+    this.read = read;
+  }
 }
 
-function addBookToLibrary(title, author, pages, read) {
-  // Need to create the code that will take the information from the html form and route it into here
+function addBookToLibrary() {
   let titleRow = document.getElementById("book-title").value;
   let authorRow = document.getElementById("author").value;
   let pageCountRow = document.getElementById("page-count").value;
@@ -44,6 +45,7 @@ function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(newBook);
     localStorage.setItem('my_library', JSON.stringify(myLibrary));
   }
+  console.log(pageCountRow);
 }
 
 // Update the DOM to show all of the books in the library and add other functions
@@ -57,19 +59,19 @@ function displayLibrary() {
     table.appendChild(row);
 
     let idData = document.createElement("td");
-    idData.innerHTML = i+1;
+    idData.textContent = i+1;
     row.appendChild(idData);
 
     let titleData = document.createElement("td");
-    titleData.innerHTML = myLibrary[i].title;
+    titleData.textContent = myLibrary[i].title;
     row.appendChild(titleData);
 
     let authorData = document.createElement("td");
-    authorData.innerHTML = myLibrary[i].author;
+    authorData.textContent = myLibrary[i].author;
     row.appendChild(authorData);
 
     let pageNumData = document.createElement("td");
-    pageNumData.innerHTML = myLibrary[i].pageNum;
+    pageNumData.textContent = myLibrary[i].pageNum;
     row.appendChild(pageNumData);
 
     let readStatusData = document.createElement("td").appendChild(document.createElement("input"));
@@ -102,7 +104,7 @@ function displayLibrary() {
   }
 
   function resetDisplay() {
-    table.innerHTML = "";
+    table.textContent = "";
   }
 
   function removeBookFromLibrary() {
